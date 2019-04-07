@@ -1,0 +1,61 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <meta name=viewport
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0">
+</head>
+
+<body>
+
+<!-- Rounded switch -->
+<h1>SoundPocket</h1>
+<hr>
+<h2>Sounds enabled</h2>
+<label class="switch">
+    <input id="soundswitch" type="checkbox" onclick="soundSwitchClicked()">
+    <span class="slider round"></span>
+</label>
+
+
+<h2>Choose your sound</h2>
+
+<button id="button1" class="button button2" onclick="chooseSound(button1, button2, button3)">Blue</button>
+<button id="button2" class="button button4" onclick="chooseSound(button2, button1, button3)">Gray</button>
+<button id="button3" class="button button5" onclick="chooseSound(button3, button1, button2)">Black</button>
+
+<hr>
+<h2>Test Android callback by getting time</h2>
+<button class="button button5" onclick="getTimeFromAndroid()">Get Time</button>
+<p>Time from Android: </p><p id="androidtime"> nothing yet...</p>
+
+<script>
+    window.oncontextmenu = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    };
+
+    function soundSwitchClicked() {
+        Android.alert('Testing alert box');
+    }
+
+    function chooseSound(id, unmark1, unmark2) {
+        id.style.backgroundColor = "#f4bf42";
+        unmark1.style.backgroundColor = "white";
+        unmark2.style.backgroundColor = "white";
+    }
+
+
+    function getTimeFromAndroid() {
+        Android.getTime();
+    }
+
+    function callbackTimeFromAndroid(time) {
+        androidtime.innerHTML = time;
+    }
+</script>
+
+
+</body>
+</html>
