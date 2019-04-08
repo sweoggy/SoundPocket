@@ -7,12 +7,16 @@ import android.webkit.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class MainActivity extends AppCompatActivity implements AccelerometerListener {
 
-    @Override
+    SensorHandler sensorHandler;
+
     protected void onCreate(Bundle savedInstanceState) {
 
-
+        if (AccelerometerManager.isSupported(this)) {
+            AccelerometerManager.startListening(this);
+        }
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);
         setContentView(webView);
@@ -23,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
 
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
-
-        webView.addJavascriptInterface(new MyJavaScriptInterface(webView, this), "Android");
+        this.sensorHandler = new SensorHandler(this);
+        webView.addJavascriptInterface(new MyJavaScriptInterface(webView, this, sensorHandler), "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
         final WebView webViewCallbackAccess = webView;
         Timer timer = new Timer();
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
 
     @Override
     public void onShake(float force) {
-
+        sensorHandler.playSound(SensorHandler.SOUND_PUNCH);
     }
 }
 

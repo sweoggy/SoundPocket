@@ -22,10 +22,25 @@ import java.util.TimerTask;
 public class MyJavaScriptInterface {
     WebView webView;
     Context context;
+    SensorHandler sensorHandler;
 
-    public MyJavaScriptInterface(WebView w, Context context) {
+    public MyJavaScriptInterface(WebView w, Context context, SensorHandler sensorHandler) {
         this.webView = w;
         this.context = context;
+        this.sensorHandler = sensorHandler;
+    }
+
+
+    @JavascriptInterface
+    public void setSoundOn(boolean bool) {
+        //alert("set soundOn to " + bool);
+        if(bool) {
+            sensorHandler.setSoundOn();
+        } else {
+            sensorHandler.setSoundOff();
+        }
+        //alert("not working");
+        sensorHandler.playSound(SensorHandler.SOUND_PUNCH);
     }
 
     @JavascriptInterface
