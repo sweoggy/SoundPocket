@@ -7,11 +7,16 @@ import android.webkit.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements AccelerometerListener {
+
     SensorHandler sensorHandler;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (AccelerometerManager.isSupported(this)) {
+            AccelerometerManager.startListening(this);
+        }
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);
         setContentView(webView);
@@ -38,9 +43,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 3000);
 
+    }
+
+    @Override
+    public void onAccelerationChanged(float x, float y, float z) {
 
     }
 
+    @Override
+    public void onShake(float force) {
+        sensorHandler.playSound(SensorHandler.SOUND_PUNCH);
+    }
 }
 
 
