@@ -7,10 +7,12 @@ import android.webkit.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AccelerometerListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);
         setContentView(webView);
@@ -37,9 +39,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 3000);
 
+    }
+
+    @Override
+    public void onAccelerationChanged(float x, float y, float z) {
 
     }
 
+    @Override
+    public void onShake(float force) {
+
+    }
 }
 
 
