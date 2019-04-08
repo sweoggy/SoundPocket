@@ -34,7 +34,7 @@ public class SensorHandler {
 
     public void playSound(int sound) {
         if (mPlayer == null) {
-            mPlayer = MediaPlayer.create(context, SOUND_SPRAY_PAINT_SHAKE);
+            mPlayer = MediaPlayer.create(context, sound);
         }
 
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
