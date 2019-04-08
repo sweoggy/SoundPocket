@@ -14,13 +14,40 @@ public class SensorHandler {
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
 
 
-    MediaPlayer mPlayer;
+    MediaPlayer mPlayerPewPew;
+    MediaPlayer mPlayerPunch;
+    MediaPlayer mPlayerGunShot;
     private boolean soundOn = false;
     private int chosenSound = SOUND_PEW_PEW;
     Context context;
 
     public SensorHandler(Context context) {
         this.context = context;
+        mPlayerPewPew = MediaPlayer.create(context, SOUND_PEW_PEW);
+        mPlayerPunch = MediaPlayer.create(context, SOUND_PUNCH);
+        mPlayerGunShot = MediaPlayer.create(context, SOUND_GUN_SHOT);
+
+
+        mPlayerPewPew.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                //stopPlayer();
+            }
+        });
+
+        mPlayerPunch.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                //stopPlayer();
+            }
+        });
+
+        mPlayerGunShot.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                //stopPlayer();
+            }
+        });
     }
 
     public boolean isSoundOn() {
@@ -40,29 +67,36 @@ public class SensorHandler {
     }
 
     public void playSound(int sound) {
-        if (mPlayer != null) {
-            stopPlayer();
+        switch (sound) {
+            case SOUND_PEW_PEW:
+                mPlayerPewPew.start();
+                break;
+            case SOUND_PUNCH:
+                mPlayerPunch.start();
+                break;
+            case SOUND_GUN_SHOT:
+                mPlayerGunShot.start();
+                break;
+            case -1:
+                switch (chosenSound) {
+                    case SOUND_PEW_PEW:
+                        mPlayerPewPew.start();
+                        break;
+                    case SOUND_PUNCH:
+                        mPlayerPunch.start();
+                        break;
+                    case SOUND_GUN_SHOT:
+                        mPlayerGunShot.start();
+                        break;
+                }
+                break;
         }
-
-        if (sound == -1) {
-            mPlayer = MediaPlayer.create(context, chosenSound);
-        } else {
-            mPlayer = MediaPlayer.create(context, sound);
-        }
-
-        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                stopPlayer();
-            }
-        });
-        mPlayer.start();
     }
 
     public void stopPlayer(){
-        if(mPlayer != null){
+      /*  if(mPlayer != null){
             mPlayer.release();
             mPlayer = null;
-        }
+        }*/
     }
 }
