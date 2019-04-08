@@ -2,6 +2,7 @@ package com.dynamicdusk.soundpocket;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.*;
 
 import java.util.Timer;
@@ -29,6 +30,18 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
 
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
+
+        webView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return true;
+            }
+        });
+        webView.setLongClickable(false);
+        webView.setHapticFeedbackEnabled(false);
+
+
+
         this.sensorHandler = new SensorHandler(this);
         this.jsHandler = new MyJavaScriptInterface(webView, this, sensorHandler);
         webView.addJavascriptInterface(jsHandler, "Android");
