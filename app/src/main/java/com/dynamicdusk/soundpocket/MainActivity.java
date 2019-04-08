@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
-        this.sensorHandler = new SensorHandler();
+        this.sensorHandler = new SensorHandler(this);
         webView.addJavascriptInterface(new MyJavaScriptInterface(webView, this, sensorHandler), "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
         final WebView webViewCallbackAccess = webView;
