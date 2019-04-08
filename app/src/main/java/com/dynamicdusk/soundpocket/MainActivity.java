@@ -8,6 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    SensorHandler sensorHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
-
-        webView.addJavascriptInterface(new MyJavaScriptInterface(webView, this), "Android");
+        this.sensorHandler = new SensorHandler();
+        webView.addJavascriptInterface(new MyJavaScriptInterface(webView, this, sensorHandler), "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
         final WebView webViewCallbackAccess = webView;
         Timer timer = new Timer();
