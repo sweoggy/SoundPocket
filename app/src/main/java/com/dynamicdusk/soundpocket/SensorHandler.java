@@ -23,6 +23,10 @@ public class SensorHandler {
 
     public SensorHandler(Context context) {
         this.context = context;
+        initPlayers();
+    }
+
+    private void initPlayers() {
         mPlayerPewPew = MediaPlayer.create(context, SOUND_PEW_PEW);
         mPlayerPunch = MediaPlayer.create(context, SOUND_PUNCH);
         mPlayerGunShot = MediaPlayer.create(context, SOUND_GUN_SHOT);
@@ -56,10 +60,12 @@ public class SensorHandler {
 
     public void setSoundOn() {
         this.soundOn = true;
+        initPlayers();
     }
 
     public void setSoundOff() {
         this.soundOn = false;
+        stopPlayers();
     }
 
     public void setSound(int sound) {
@@ -93,10 +99,20 @@ public class SensorHandler {
         }
     }
 
-    public void stopPlayer(){
-      /*  if(mPlayer != null){
-            mPlayer.release();
-            mPlayer = null;
-        }*/
+    private void stopPlayers(){
+        if(mPlayerPewPew != null){
+            mPlayerPewPew.release();
+            mPlayerPewPew = null;
+        }
+
+        if(mPlayerPunch != null){
+            mPlayerPunch.release();
+            mPlayerPunch = null;
+        }
+
+        if(mPlayerGunShot != null){
+            mPlayerGunShot.release();
+            mPlayerGunShot = null;
+        }
     }
 }

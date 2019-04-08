@@ -39,8 +39,6 @@ public class MyJavaScriptInterface {
         } else {
             sensorHandler.setSoundOff();
         }
-        //alert("not working");
-        sensorHandler.playSound(-1);
     }
 
     @JavascriptInterface

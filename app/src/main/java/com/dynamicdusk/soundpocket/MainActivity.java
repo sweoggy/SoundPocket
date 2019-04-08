@@ -55,8 +55,10 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
 
     @Override
     public void onShake(float force) {
-        sensorHandler.playSound(-1);
-        jsHandler.alert("Force: " + force);
+        if(sensorHandler.isSoundOn()) {
+            sensorHandler.playSound(-1);
+        }
+        //jsHandler.alert("Force: " + force);
     }
 }
 
