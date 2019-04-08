@@ -40,8 +40,27 @@ public class MyJavaScriptInterface {
             sensorHandler.setSoundOff();
         }
         //alert("not working");
-        sensorHandler.playSound(SensorHandler.SOUND_PUNCH);
+        sensorHandler.playSound(-1);
     }
+
+    @JavascriptInterface
+    public void setSound(int id) {
+        System.out.println("---------------------------------setSoundOn");
+        if(id == 1) {
+            sensorHandler.setSound(SensorHandler.SOUND_PEW_PEW);
+            System.out.println("---------------------------------setSoundOn 1");
+        } else if(id == 2) {
+            sensorHandler.setSound(SensorHandler.SOUND_PUNCH);
+            System.out.println("---------------------------------setSoundOn 2");
+        } else if (id == 3) {
+            sensorHandler.setSound(SensorHandler.SOUND_GUN_SHOT);
+            System.out.println("---------------------------------setSoundOn 3");
+        }
+        //alert("not working");
+        sensorHandler.playSound(-1);
+    }
+
+
 
     @JavascriptInterface
     public void alert(String message) {
