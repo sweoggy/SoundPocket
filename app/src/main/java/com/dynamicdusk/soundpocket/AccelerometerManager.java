@@ -11,7 +11,7 @@ public class AccelerometerManager {
 
     private static Context context = null;
 
-    private static float threshold = 18.0f;
+    private static float threshold = 12.0f;
     private static int interval = 200;
 
     private static AccelerometerListener listener;
@@ -141,7 +141,7 @@ public class AccelerometerManager {
                 lastX = x;
                 lastY = y;
                 lastZ = z;
-                Toast.makeText(context, "No Motion detected", Toast.LENGTH_SHORT).show();
+
 
             } else {
                 timeDiff = now - lastUpdate;
@@ -156,10 +156,6 @@ public class AccelerometerManager {
                         if (now - lastShake >= interval) {
 // trigger X event
                             listener.onShakeX(force);
-                        } else {
-                            Toast.makeText(context, "No Motion detected",
-                                    Toast.LENGTH_SHORT).show();
-
                         }
                         lastShake = now;
                     }
@@ -168,10 +164,6 @@ public class AccelerometerManager {
                         if (now - lastShake >= interval) {
 // trigger shake event
                             listener.onShakeY(force);
-                        } else {
-                            Toast.makeText(context, "No Motion detected",
-                                    Toast.LENGTH_SHORT).show();
-
                         }
                         lastShake = now;
                     }
@@ -181,10 +173,6 @@ public class AccelerometerManager {
                         if (now - lastShake >= interval) {
 // trigger shake event
                             listener.onShakeZ(force);
-                        } else {
-                            Toast.makeText(context, "No Motion detected",
-                                    Toast.LENGTH_SHORT).show();
-
                         }
                         lastShake = now;
                     }
@@ -207,8 +195,6 @@ public class AccelerometerManager {
                     lastY = y;
                     lastZ = z;
                     lastUpdate = now;
-                } else {
-                    Toast.makeText(context, "No Motion detected", Toast.LENGTH_SHORT).show();
                 }
             }
 // trigger change event
