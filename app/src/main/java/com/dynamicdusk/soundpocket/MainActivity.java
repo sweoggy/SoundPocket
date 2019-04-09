@@ -13,7 +13,9 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
 
     SensorHandler sensorHandler;
     MyJavaScriptInterface jsHandler;
-
+    public static final int SOUND_PEW_PEW = R.raw.pewpew;
+    public static final int SOUND_PUNCH = R.raw.punch;
+    public static final int SOUND_GUN_SHOT = R.raw.gunshot;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -70,6 +72,27 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
     public void onShake(float force) {
         if(sensorHandler.isSoundOn()) {
             sensorHandler.playSound(-1);
+        }
+        //jsHandler.alert("Force: " + force);
+    }
+
+    public void onShakeX(float force) {
+        if(sensorHandler.isSoundOn()) {
+            sensorHandler.playSound(SOUND_PEW_PEW);
+        }
+        //jsHandler.alert("Force: " + force);
+    }
+
+    public void onShakeY(float force) {
+        if(sensorHandler.isSoundOn()) {
+            sensorHandler.playSound(SOUND_GUN_SHOT);
+        }
+        //jsHandler.alert("Force: " + force);
+    }
+
+    public void onShakeZ(float force) {
+        if(sensorHandler.isSoundOn()) {
+            sensorHandler.playSound(SOUND_PUNCH);
         }
         //jsHandler.alert("Force: " + force);
     }

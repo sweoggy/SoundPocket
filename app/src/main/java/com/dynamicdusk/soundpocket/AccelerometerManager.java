@@ -11,7 +11,7 @@ public class AccelerometerManager {
 
     private static Context context = null;
 
-    private static float threshold = 15.0f;
+    private static float threshold = 18.0f;
     private static int interval = 200;
 
     private static AccelerometerListener listener;
@@ -114,6 +114,10 @@ public class AccelerometerManager {
         private float lastY = 0;
         private float lastZ = 0;
         private float force = 0;
+        private float forceX = 0;
+        private float forceY = 0;
+        private float forceZ = 0;
+
 
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
@@ -143,14 +147,15 @@ public class AccelerometerManager {
                 timeDiff = now - lastUpdate;
 
                 if (timeDiff > 0) {
+                    forceX = Math.abs(x - lastX );
+                    forceY = Math.abs(y - lastY );
+                    forceZ = Math.abs(z - lastZ );
 
-                    force = Math.abs(x + y + z - lastX - lastY - lastZ);
-
-                    if (Float.compare(force, threshold) > 0) {
+                    if (Float.compare(forceX, threshold) > 0) {
 
                         if (now - lastShake >= interval) {
-// trigger shake event
-                            listener.onShake(force);
+// trigger X event
+                            listener.onShakeX(force);
                         } else {
                             Toast.makeText(context, "No Motion detected",
                                     Toast.LENGTH_SHORT).show();
@@ -158,6 +163,46 @@ public class AccelerometerManager {
                         }
                         lastShake = now;
                     }
+                    if (Float.compare(forceY, threshold) > 0) {
+
+                        if (now - lastShake >= interval) {
+// trigger shake event
+                            listener.onShakeY(force);
+                        } else {
+                            Toast.makeText(context, "No Motion detected",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                        lastShake = now;
+                    }
+
+                    if (Float.compare(forceZ, threshold) > 0) {
+
+                        if (now - lastShake >= interval) {
+// trigger shake event
+                            listener.onShakeZ(force);
+                        } else {
+                            Toast.makeText(context, "No Motion detected",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                        lastShake = now;
+                    }
+
+                    //force = Math.abs(x + y + z - lastX - lastY - lastZ);
+
+                    //if (Float.compare(force, threshold) > 0) {
+
+                      //  if (now - lastShake >= interval) {
+// trigger shake event
+                          //  listener.onShake(force);
+                        //} else {
+                            //Toast.makeText(context, "No Motion detected",
+                              //      Toast.LENGTH_SHORT).show();
+
+                        //}
+                        //lastShake = now;
+                   // }
                     lastX = x;
                     lastY = y;
                     lastZ = z;
