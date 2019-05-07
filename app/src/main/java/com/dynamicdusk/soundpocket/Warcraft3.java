@@ -5,11 +5,7 @@ import android.content.Context;
 public class Warcraft3 implements AccelerometerListener {
 
     SoundPlayer soundPlayer;
-
-
-    public void set(SoundPlayer soundPlayer) {
-        this.soundPlayer = soundPlayer;
-    }
+    
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
         this.soundPlayer = soundPlayer;
