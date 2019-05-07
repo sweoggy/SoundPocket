@@ -7,7 +7,7 @@ public class Shotgun implements AccelerometerListener {
     private boolean magaziePulledBack;
     private boolean magazinePulledForward;
     private SoundPlayer soundPlayer;
-
+    private int intervall;
     public void setSoundPlayer(SoundPlayer soundPlayer){
         this.soundPlayer = soundPlayer;
     }

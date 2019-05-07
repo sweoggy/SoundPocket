@@ -42,9 +42,9 @@
 
 <h2>Choose your sound</h2>
 
-<button id="button1" class="button button2" onclick="chooseSound(button1, button2, button3)">Pew</button>
-<button id="button2" class="button button4" onclick="chooseSound(button2, button1, button3)">Punch</button>
-<button id="button3" class="button button5" onclick="chooseSound(button3, button1, button2)">Gun Shot</button>
+<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3)">Shotgun</button>
+<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun)">Mario</button>
+<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario)">Warcraft 3</button>
 
 <hr>
 <h2>Test Android callback by getting time</h2>
@@ -67,12 +67,12 @@
         id.style.backgroundColor = "#f4bf42";
         unmark1.style.backgroundColor = "white";
         unmark2.style.backgroundColor = "white";
-        if(id.id == 'button1') {
-            Android.setSound(1);
-        } else if (id.id == 'button2') {
-            Android.setSound(2);
-        } else if (id.id == 'button3') {
-            Android.setSound(3);
+        if(id.id == 'buttonWacraft') {
+            Android.setSound("Shotgun");
+        } else if (id.id == 'buttonMario') {
+            Android.setSound("Mario");
+        } else if (id.id == 'buttonWarcraft3') {
+            Android.setSound("Warcraft3");
         }
     }
 

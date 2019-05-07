@@ -30,21 +30,21 @@ public class Warcraft3 implements AccelerometerListener {
 
     public void onShakeX(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
+            soundPlayer.playSound(SoundPlayer.SOUND_WORK_WORK);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeY(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
+            soundPlayer.playSound(SoundPlayer.SOUND_YES_MI_LORD);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeZ(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.SOUND_PUNCH);
+            soundPlayer.playSound(SoundPlayer.SOUND_OFF_I_GO_THEN);
         }
         //jsHandler.alert("Force: " + force);
     }

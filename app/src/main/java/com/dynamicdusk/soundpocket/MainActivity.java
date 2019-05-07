@@ -1,9 +1,12 @@
 package com.dynamicdusk.soundpocket;
 
+import android.support.v4.content.WakefulBroadcastReceiver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.*;
+
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -12,12 +15,21 @@ public class MainActivity extends AppCompatActivity{
 
     SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
-    Shotgun shotgun;
     public static final int SOUND_PEW_PEW = R.raw.pewpew;
     public static final int SOUND_PUNCH = R.raw.punch;
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
+    AccelerometerManager accelerometerManager;
+
+    private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
+
+        accelerometerManager = new AccelerometerManager();
+        packages.put("Warcraft3", new Warcraft3());
+        packages.put("Shotgun", new Shotgun());
+        packages.put("Mario", new Warcraft3());
 
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);
@@ -42,16 +54,15 @@ public class MainActivity extends AppCompatActivity{
 
 
         this.soundPlayer = new SoundPlayer(this);
-        this.jsHandler = new MyJavaScriptInterface(webView, this, soundPlayer);
+        this.jsHandler = new MyJavaScriptInterface(webView, this, soundPlayer, this);
         webView.addJavascriptInterface(jsHandler, "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
         final WebView webViewCallbackAccess = webView;
-        shotgun = new Shotgun();
-        shotgun.setSoundPlayer(soundPlayer);
+        packages.get("Shotgun").setSoundPlayer(this.soundPlayer);
         if (AccelerometerManager.isSupported(this)) {
-            AccelerometerManager.startListening(shotgun);
+            AccelerometerManager.startListening(packages.get("Shotgun"));
         }
-       shotgun.setSoundPlayer(soundPlayer);
+
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -63,6 +74,13 @@ public class MainActivity extends AppCompatActivity{
                 });
             }
         }, 3000);
+    }
+
+    public void setPackage(String key){
+        packages.get(key).setSoundPlayer(this.soundPlayer);
+        if (AccelerometerManager.isSupported(this)) {
+            AccelerometerManager.startListening(packages.get(key));
+        }
 
     }
 }
