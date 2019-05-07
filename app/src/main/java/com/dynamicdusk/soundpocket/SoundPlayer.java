@@ -12,6 +12,7 @@ import java.nio.channels.Pipe;
 public class SoundPlayer {
     //public static final int SOUND_SPRAY_PAINT_SHAKE = R.raw.spraypaintshake;
     public static final int SOUND_DRY_FIRE = R.raw.dryfire;
+    public static final int SOUND_AMMO_LOAD = R.raw.ammoload;
     public static final int SOUND_PEW_PEW = R.raw.pewpew;
     public static final int SOUND_PUNCH = R.raw.punch;
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
@@ -109,6 +110,10 @@ public class SoundPlayer {
 
                 case SOUND_DRY_FIRE:
                     initPlayer(SOUND_DRY_FIRE);
+                    mPlayer.start();
+                    break;
+                case SOUND_AMMO_LOAD:
+                    initPlayer(SOUND_AMMO_LOAD);
                     mPlayer.start();
                     break;
                 case -1:
