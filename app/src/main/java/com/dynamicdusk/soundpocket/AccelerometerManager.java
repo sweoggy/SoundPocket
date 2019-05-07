@@ -18,7 +18,6 @@ public class AccelerometerManager {
     private static Sensor sensor;
     private static SensorManager acceleratorManager;
     private static SensorManager orientationManager;
-
     private static Boolean supported;
     private static boolean running = false;
 

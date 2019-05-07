@@ -45,9 +45,6 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setSound(String key) {
-        Date currentTime = Calendar.getInstance().getTime();
-        String strDate = currentTime.toString();
-        runJavaScript("callbackTimeFromAndroid(\"" + strDate + "\")");
         mainActivity.setPackage(key);
     }
 

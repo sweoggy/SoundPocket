@@ -15,9 +15,6 @@ public class MainActivity extends AppCompatActivity{
 
     SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
-    public static final int SOUND_PEW_PEW = R.raw.pewpew;
-    public static final int SOUND_PUNCH = R.raw.punch;
-    public static final int SOUND_GUN_SHOT = R.raw.gunshot;
     AccelerometerManager accelerometerManager;
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
