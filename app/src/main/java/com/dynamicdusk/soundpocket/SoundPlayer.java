@@ -16,16 +16,15 @@ public class SoundPlayer {
     public static final int SOUND_SHOTGUN_RELOAD = R.raw.shotgunreload;
 
 
-    MediaPlayer mPlayer;
-    private boolean soundOn = false;
-    private int chosenSound = SOUND_PEW_PEW;
+    protected MediaPlayer mPlayer;
+    protected boolean soundOn = false;
     Context context;
 
     public SoundPlayer(Context context) {
         this.context = context;
     }
 
-    private void initPlayer(int chosenSound) {
+    protected void initPlayer(int chosenSound) {
 
         mPlayer = MediaPlayer.create(context, chosenSound);
 
@@ -50,12 +49,8 @@ public class SoundPlayer {
         this.soundOn = false;
     }
 
-    public void setSound(int sound) {
-        this.chosenSound = sound;
-    }
-
     public void playSound(int sound) {
-        if (soundOn){
+        if (soundOn) {
             switch (sound) {
                 case SOUND_PEW_PEW:
                     initPlayer(SOUND_PEW_PEW);
@@ -80,7 +75,6 @@ public class SoundPlayer {
                 case -1:
 
             }
-
         }
     }
 }
