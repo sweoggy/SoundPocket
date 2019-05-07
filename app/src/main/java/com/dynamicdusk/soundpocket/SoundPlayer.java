@@ -7,15 +7,15 @@ import android.media.MediaPlayer;
  * Created by fredricbillow on 2019-04-08.
  */
 
-public class SoundPlayer {
+public abstract class SoundPlayer {
     //public static final int SOUND_SPRAY_PAINT_SHAKE = R.raw.spraypaintshake;
     public static final int SOUND_PEW_PEW = R.raw.pewpew;
     public static final int SOUND_PUNCH = R.raw.punch;
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
 
 
-    MediaPlayer mPlayer;
-    private boolean soundOn = false;
+    protected MediaPlayer mPlayer;
+    protected boolean soundOn = false;
     private int chosenSound = SOUND_PEW_PEW;
     Context context;
 
@@ -23,7 +23,7 @@ public class SoundPlayer {
         this.context = context;
     }
 
-    private void initPlayer(int chosenSound) {
+    protected void initPlayer(int chosenSound) {
 
         mPlayer = MediaPlayer.create(context, chosenSound);
 
@@ -52,25 +52,9 @@ public class SoundPlayer {
         this.chosenSound = sound;
     }
 
+    protected abstract void playSpecificSound(int sound);
+
     public void playSound(int sound) {
-        if (soundOn){
-            switch (sound) {
-                case SOUND_PEW_PEW:
-                    initPlayer(SOUND_PEW_PEW);
-                    mPlayer.start();
-                    break;
-                case SOUND_PUNCH:
-                    initPlayer(SOUND_PUNCH);
-                    mPlayer.start();
-                    break;
-                case SOUND_GUN_SHOT:
-                    initPlayer(SOUND_GUN_SHOT);
-                    mPlayer.start();
-                    break;
-                case -1:
-
-            }
-
-        }
+      playSpecificSound(sound);
     }
 }
