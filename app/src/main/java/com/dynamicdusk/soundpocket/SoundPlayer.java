@@ -79,12 +79,12 @@ public class SoundPlayer {
                     initPlayer(SOUND_OFF_I_GO_THEN);
                     mPlayer.start();
                     break;
-                case SOUND_WORK_WORK:
-                    initPlayer(SOUND_WORK_WORK);
-                    mPlayer.start();
-                    break;
                 case SOUND_YES_MI_LORD:
                     initPlayer(SOUND_YES_MI_LORD);
+                    mPlayer.start();
+                    break;
+                case SOUND_WORK_WORK:
+                    initPlayer(SOUND_WORK_WORK);
                     mPlayer.start();
                     break;
                 case -1:
