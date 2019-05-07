@@ -23,21 +23,21 @@ public class Mario implements AccelerometerListener {
 
     public void onShakeX(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.FIREBALL);
+            soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeY(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.COIN);
+            soundPlayer.playSound(SoundPlayer.SOUND_COIN);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeZ(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.PIPE);
+            soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
         }
         //jsHandler.alert("Force: " + force);
     }

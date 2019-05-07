@@ -11,6 +11,7 @@ import java.nio.channels.Pipe;
 
 public class SoundPlayer {
     //public static final int SOUND_SPRAY_PAINT_SHAKE = R.raw.spraypaintshake;
+    public static final int SOUND_DRY_FIRE = R.raw.dryfire;
     public static final int SOUND_PEW_PEW = R.raw.pewpew;
     public static final int SOUND_PUNCH = R.raw.punch;
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
@@ -20,9 +21,9 @@ public class SoundPlayer {
     public static final int SOUND_RIGHT_O = R.raw.righto;
     public static final int SOUND_WORK_WORK = R.raw.workwork;
     public static final int SOUND_YES_MI_LORD = R.raw.yesmilord;
-    public static final int FIREBALL = R.raw.fireball;
-    public static final int COIN = R.raw.coin;
-    public static final int PIPE = R.raw.pipe;
+    public static final int SOUND_FIREBALL = R.raw.fireball;
+    public static final int SOUND_COIN = R.raw.coin;
+    public static final int SOUND_PIPE = R.raw.pipe;
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
@@ -92,16 +93,21 @@ public class SoundPlayer {
                     initPlayer(SOUND_WORK_WORK);
                     mPlayer.start();
                     break;
-                case PIPE:
-                    initPlayer(PIPE);
+                case SOUND_PIPE:
+                    initPlayer(SOUND_PIPE);
                     break;
-                case FIREBALL:
-                    initPlayer(FIREBALL);
-                    break;
-                       case COIN:
-                    initPlayer(COIN);
+                case SOUND_FIREBALL:
+                    initPlayer(SOUND_FIREBALL);
                     break;
 
+                    case SOUND_COIN:
+                    initPlayer(SOUND_COIN);
+                    break;
+
+                case SOUND_DRY_FIRE:
+                    initPlayer(SOUND_DRY_FIRE);
+                    mPlayer.start();
+                    break;
                 case -1:
             }
         }
