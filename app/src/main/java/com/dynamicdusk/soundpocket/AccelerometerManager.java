@@ -155,7 +155,6 @@ public class AccelerometerManager {
                     if (Float.compare(forceX, threshold) > 0) {
 
                         if (now - lastShake >= interval) {
-// trigger X event
                             listener.onShakeX(force);
                         }
                         lastShake = now;
@@ -163,7 +162,6 @@ public class AccelerometerManager {
                     if (Float.compare(forceY, threshold) > 0) {
 
                         if (now - lastShake >= interval) {
-// trigger shake event
                             listener.onShakeY(force);
                         }
                         lastShake = now;
@@ -172,7 +170,6 @@ public class AccelerometerManager {
                     if (Float.compare(forceZ, threshold) > 0) {
 
                         if (now - lastShake >= interval) {
-// trigger shake event
                             listener.onShakeZ(force);
                         }
                         lastShake = now;
