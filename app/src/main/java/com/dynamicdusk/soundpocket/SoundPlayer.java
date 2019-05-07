@@ -95,13 +95,16 @@ public class SoundPlayer {
                     break;
                 case SOUND_PIPE:
                     initPlayer(SOUND_PIPE);
+                    mPlayer.start();
                     break;
                 case SOUND_FIREBALL:
                     initPlayer(SOUND_FIREBALL);
+                    mPlayer.start();
                     break;
 
                     case SOUND_COIN:
                     initPlayer(SOUND_COIN);
+                    mPlayer.start();
                     break;
 
                 case SOUND_DRY_FIRE:
