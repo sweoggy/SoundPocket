@@ -16,7 +16,8 @@ public class AccelerometerManager {
 
     private static AccelerometerListener listener;
     private static Sensor sensor;
-    private static SensorManager sensorManager;
+    private static SensorManager acceleratorManager;
+    private static SensorManager orientationManager;
 
     private static Boolean supported;
     private static boolean running = false;
@@ -25,8 +26,8 @@ public class AccelerometerManager {
     public static void stopListening() {
         running = false;
         try {
-            if (sensorManager != null && sensorEventListener != null) {
-                sensorManager.unregisterListener(sensorEventListener);
+            if (acceleratorManager != null && sensorEventListener != null) {
+                acceleratorManager.unregisterListener(sensorEventListener);
             }
         } catch (Exception e) {
         }
@@ -37,12 +38,13 @@ public class AccelerometerManager {
         if (supported == null) {
             if (context != null) {
 
-                sensorManager = (SensorManager) context.
+                acceleratorManager = (SensorManager) context.
                         getSystemService(Context.SENSOR_SERVICE);
+
 
 // Get all sensors in device
 
-                List<Sensor> sensors = sensorManager.getSensorList(
+                List<Sensor> sensors = acceleratorManager.getSensorList(
                         Sensor.TYPE_ACCELEROMETER);
 
                 supported = new Boolean(sensors.size() > 0);
@@ -67,11 +69,11 @@ public class AccelerometerManager {
 
     public static void startListening(AccelerometerListener accelerometerListener) {
 
-        sensorManager = (SensorManager) context.
+        acceleratorManager = (SensorManager) context.
                 getSystemService(Context.SENSOR_SERVICE);
 
 // Take all sensors in device
-        List<Sensor> sensors = sensorManager.getSensorList(
+        List<Sensor> sensors = acceleratorManager.getSensorList(
                 Sensor.TYPE_ACCELEROMETER);
 
         if (sensors.size() > 0) {
@@ -79,7 +81,7 @@ public class AccelerometerManager {
             sensor = sensors.get(0);
 
 // Register Accelerometer Listener
-            running = sensorManager.registerListener(
+            running = acceleratorManager.registerListener(
                     sensorEventListener, sensor,
                     SensorManager.SENSOR_DELAY_GAME);
 
@@ -117,7 +119,7 @@ public class AccelerometerManager {
         private float forceX = 0;
         private float forceY = 0;
         private float forceZ = 0;
-
+        private float roll = 0;
 
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }

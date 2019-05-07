@@ -14,42 +14,24 @@ public class SensorHandler {
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
 
 
-    MediaPlayer mPlayerPewPew;
-    MediaPlayer mPlayerPunch;
-    MediaPlayer mPlayerGunShot;
+    MediaPlayer mPlayer;
     private boolean soundOn = false;
     private int chosenSound = SOUND_PEW_PEW;
     Context context;
 
     public SensorHandler(Context context) {
         this.context = context;
-        initPlayers();
     }
 
-    private void initPlayers() {
-        mPlayerPewPew = MediaPlayer.create(context, SOUND_PEW_PEW);
-        mPlayerPunch = MediaPlayer.create(context, SOUND_PUNCH);
-        mPlayerGunShot = MediaPlayer.create(context, SOUND_GUN_SHOT);
+    private void initPlayer(int chosenSound) {
+
+        mPlayer = MediaPlayer.create(context, chosenSound);
 
 
-        mPlayerPewPew.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                //stopPlayer();
-            }
-        });
-
-        mPlayerPunch.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                //stopPlayer();
-            }
-        });
-
-        mPlayerGunShot.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                //stopPlayer();
+                mp.release();
             }
         });
     }
@@ -60,12 +42,10 @@ public class SensorHandler {
 
     public void setSoundOn() {
         this.soundOn = true;
-        initPlayers();
     }
 
     public void setSoundOff() {
         this.soundOn = false;
-        stopPlayers();
     }
 
     public void setSound(int sound) {
@@ -73,46 +53,24 @@ public class SensorHandler {
     }
 
     public void playSound(int sound) {
-        switch (sound) {
-            case SOUND_PEW_PEW:
-                mPlayerPewPew.start();
-                break;
-            case SOUND_PUNCH:
-                mPlayerPunch.start();
-                break;
-            case SOUND_GUN_SHOT:
-                mPlayerGunShot.start();
-                break;
-            case -1:
-                switch (chosenSound) {
-                    case SOUND_PEW_PEW:
-                        mPlayerPewPew.start();
-                        break;
-                    case SOUND_PUNCH:
-                        mPlayerPunch.start();
-                        break;
-                    case SOUND_GUN_SHOT:
-                        mPlayerGunShot.start();
-                        break;
-                }
-                break;
-        }
-    }
+        if (soundOn){
+            switch (sound) {
+                case SOUND_PEW_PEW:
+                    initPlayer(SOUND_PEW_PEW);
+                    mPlayer.start();
+                    break;
+                case SOUND_PUNCH:
+                    initPlayer(SOUND_PUNCH);
+                    mPlayer.start();
+                    break;
+                case SOUND_GUN_SHOT:
+                    initPlayer(SOUND_GUN_SHOT);
+                    mPlayer.start();
+                    break;
+                case -1:
 
-    private void stopPlayers(){
-        if(mPlayerPewPew != null){
-            mPlayerPewPew.release();
-            mPlayerPewPew = null;
-        }
+            }
 
-        if(mPlayerPunch != null){
-            mPlayerPunch.release();
-            mPlayerPunch = null;
-        }
-
-        if(mPlayerGunShot != null){
-            mPlayerGunShot.release();
-            mPlayerGunShot = null;
         }
     }
 }
