@@ -33,14 +33,14 @@ public class MLG implements AccelerometerListener {
 
     public void onShakeY(float force) {
         if(soundPlayer.isSoundOn()) {
-            //soundPlayer.playSound(SoundPlayer.SOUND_YES_MI_LORD);
+            soundPlayer.playSound(SoundPlayer.SOUND_AIR_HORN);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeZ(float force) {
         if(soundPlayer.isSoundOn()) {
-           // soundPlayer.playSound(SoundPlayer.SOUND_OFF_I_GO_THEN);
+            soundPlayer.playSound(SoundPlayer.SOUND_AIR_HORN);
         }
         //jsHandler.alert("Force: " + force);
     }
