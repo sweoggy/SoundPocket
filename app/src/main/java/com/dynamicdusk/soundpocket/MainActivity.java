@@ -10,7 +10,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements AccelerometerListener {
 
-    SensorHandler sensorHandler;
+    SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
     public static final int SOUND_PEW_PEW = R.raw.pewpew;
     public static final int SOUND_PUNCH = R.raw.punch;
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
 
 
 
-        this.sensorHandler = new SensorHandler(this);
-        this.jsHandler = new MyJavaScriptInterface(webView, this, sensorHandler);
+        this.soundPlayer = new SoundPlayer(this);
+        this.jsHandler = new MyJavaScriptInterface(webView, this, soundPlayer);
         webView.addJavascriptInterface(jsHandler, "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
         final WebView webViewCallbackAccess = webView;
@@ -69,29 +69,29 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
 
     @Override
     public void onShake(float force) {
-        if(sensorHandler.isSoundOn()) {
-            sensorHandler.playSound(-1);
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(-1);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeX(float force) {
-        if(sensorHandler.isSoundOn()) {
-            sensorHandler.playSound(SOUND_PEW_PEW);
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(SOUND_PEW_PEW);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeY(float force) {
-        if(sensorHandler.isSoundOn()) {
-            sensorHandler.playSound(SOUND_GUN_SHOT);
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(SOUND_GUN_SHOT);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeZ(float force) {
-        if(sensorHandler.isSoundOn()) {
-            sensorHandler.playSound(SOUND_PUNCH);
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(SOUND_PUNCH);
         }
         //jsHandler.alert("Force: " + force);
     }

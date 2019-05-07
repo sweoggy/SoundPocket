@@ -7,7 +7,7 @@ import android.media.MediaPlayer;
  * Created by fredricbillow on 2019-04-08.
  */
 
-public class SensorHandler {
+public class SoundPlayer {
     //public static final int SOUND_SPRAY_PAINT_SHAKE = R.raw.spraypaintshake;
     public static final int SOUND_PEW_PEW = R.raw.pewpew;
     public static final int SOUND_PUNCH = R.raw.punch;
@@ -19,7 +19,7 @@ public class SensorHandler {
     private int chosenSound = SOUND_PEW_PEW;
     Context context;
 
-    public SensorHandler(Context context) {
+    public SoundPlayer(Context context) {
         this.context = context;
     }
 

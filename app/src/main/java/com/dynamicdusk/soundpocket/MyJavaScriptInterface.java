@@ -22,12 +22,12 @@ import java.util.TimerTask;
 public class MyJavaScriptInterface {
     WebView webView;
     Context context;
-    SensorHandler sensorHandler;
+    SoundPlayer soundPlayer;
 
-    public MyJavaScriptInterface(WebView w, Context context, SensorHandler sensorHandler) {
+    public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer) {
         this.webView = w;
         this.context = context;
-        this.sensorHandler = sensorHandler;
+        this.soundPlayer = soundPlayer;
     }
 
 
@@ -35,9 +35,9 @@ public class MyJavaScriptInterface {
     public void setSoundOn(boolean bool) {
         //alert("set soundOn to " + bool);
         if(bool) {
-            sensorHandler.setSoundOn();
+            soundPlayer.setSoundOn();
         } else {
-            sensorHandler.setSoundOff();
+            soundPlayer.setSoundOff();
         }
     }
 
@@ -45,17 +45,17 @@ public class MyJavaScriptInterface {
     public void setSound(int id) {
         System.out.println("---------------------------------setSoundOn");
         if(id == 1) {
-            sensorHandler.setSound(SensorHandler.SOUND_PEW_PEW);
+            soundPlayer.setSound(SoundPlayer.SOUND_PEW_PEW);
             System.out.println("---------------------------------setSoundOn 1");
         } else if(id == 2) {
-            sensorHandler.setSound(SensorHandler.SOUND_PUNCH);
+            soundPlayer.setSound(SoundPlayer.SOUND_PUNCH);
             System.out.println("---------------------------------setSoundOn 2");
         } else if (id == 3) {
-            sensorHandler.setSound(SensorHandler.SOUND_GUN_SHOT);
+            soundPlayer.setSound(SoundPlayer.SOUND_GUN_SHOT);
             System.out.println("---------------------------------setSoundOn 3");
         }
         //alert("not working");
-        sensorHandler.playSound(-1);
+        soundPlayer.playSound(-1);
     }
 
 
