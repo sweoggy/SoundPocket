@@ -11,14 +11,15 @@ public class AccelerometerManager {
 
     private static Context context = null;
 
-    private static float threshold = 12.0f;
+    private static float xThreshold = 12.0f;
+    private static float yThreshold = 8;
+    private static float zThreshold = 12.0f;
     private static int interval = 200;
 
     private static AccelerometerListener listener;
     private static Sensor sensor;
     private static SensorManager acceleratorManager;
     private static SensorManager orientationManager;
-
     private static Boolean supported;
     private static boolean running = false;
 
@@ -56,7 +57,7 @@ public class AccelerometerManager {
     }
 
     public static void configure(int threshold, int interval) {
-        AccelerometerManager.threshold = threshold;
+        AccelerometerManager.xThreshold = threshold;
         AccelerometerManager.interval = interval;
     }
 
@@ -153,27 +154,24 @@ public class AccelerometerManager {
                     forceY = Math.abs(y - lastY );
                     forceZ = Math.abs(z - lastZ );
 
-                    if (Float.compare(forceX, threshold) > 0) {
+                    if (Float.compare(forceX, xThreshold) > 0) {
 
                         if (now - lastShake >= interval) {
-// trigger X event
                             listener.onShakeX(force);
                         }
                         lastShake = now;
                     }
-                    if (Float.compare(forceY, threshold) > 0) {
+                    if (Float.compare(forceY, yThreshold) > 0) {
 
                         if (now - lastShake >= interval) {
-// trigger shake event
                             listener.onShakeY(force);
                         }
                         lastShake = now;
                     }
 
-                    if (Float.compare(forceZ, threshold) > 0) {
+                    if (Float.compare(forceZ, zThreshold) > 0) {
 
                         if (now - lastShake >= interval) {
-// trigger shake event
                             listener.onShakeZ(force);
                         }
                         lastShake = now;

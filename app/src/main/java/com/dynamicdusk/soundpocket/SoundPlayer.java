@@ -3,18 +3,27 @@ package com.dynamicdusk.soundpocket;
 import android.content.Context;
 import android.media.MediaPlayer;
 
+import java.nio.channels.Pipe;
+
 /**
  * Created by fredricbillow on 2019-04-08.
  */
 
 public class SoundPlayer {
     //public static final int SOUND_SPRAY_PAINT_SHAKE = R.raw.spraypaintshake;
+    public static final int SOUND_DRY_FIRE = R.raw.dryfire;
     public static final int SOUND_PEW_PEW = R.raw.pewpew;
     public static final int SOUND_PUNCH = R.raw.punch;
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
     public static final int SOUND_SHOTGUN_SHOT = R.raw.shotgunshot;
     public static final int SOUND_SHOTGUN_RELOAD = R.raw.shotgunreload;
-
+    public static final int SOUND_OFF_I_GO_THEN = R.raw.offigothen;
+    public static final int SOUND_RIGHT_O = R.raw.righto;
+    public static final int SOUND_WORK_WORK = R.raw.workwork;
+    public static final int SOUND_YES_MI_LORD = R.raw.yesmilord;
+    public static final int SOUND_FIREBALL = R.raw.fireball;
+    public static final int SOUND_COIN = R.raw.coin;
+    public static final int SOUND_PIPE = R.raw.pipe;
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
@@ -72,8 +81,37 @@ public class SoundPlayer {
                     initPlayer(SOUND_SHOTGUN_RELOAD);
                     mPlayer.start();
                     break;
-                case -1:
+                case SOUND_OFF_I_GO_THEN:
+                    initPlayer(SOUND_OFF_I_GO_THEN);
+                    mPlayer.start();
+                    break;
+                case SOUND_YES_MI_LORD:
+                    initPlayer(SOUND_YES_MI_LORD);
+                    mPlayer.start();
+                    break;
+                case SOUND_WORK_WORK:
+                    initPlayer(SOUND_WORK_WORK);
+                    mPlayer.start();
+                    break;
+                case SOUND_PIPE:
+                    initPlayer(SOUND_PIPE);
+                    mPlayer.start();
+                    break;
+                case SOUND_FIREBALL:
+                    initPlayer(SOUND_FIREBALL);
+                    mPlayer.start();
+                    break;
 
+                    case SOUND_COIN:
+                    initPlayer(SOUND_COIN);
+                    mPlayer.start();
+                    break;
+
+                case SOUND_DRY_FIRE:
+                    initPlayer(SOUND_DRY_FIRE);
+                    mPlayer.start();
+                    break;
+                case -1:
             }
         }
     }

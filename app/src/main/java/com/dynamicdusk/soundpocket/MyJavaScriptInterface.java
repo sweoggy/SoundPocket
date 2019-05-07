@@ -23,11 +23,13 @@ public class MyJavaScriptInterface {
     WebView webView;
     Context context;
     SoundPlayer soundPlayer;
+    MainActivity mainActivity;
 
-    public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer) {
+    public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer, MainActivity mainActivity) {
         this.webView = w;
         this.context = context;
         this.soundPlayer = soundPlayer;
+        this.mainActivity = mainActivity;
     }
 
 
@@ -42,7 +44,8 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void setSound(int id) {
+    public void setSound(String key) {
+        mainActivity.setPackage(key);
     }
 
 
