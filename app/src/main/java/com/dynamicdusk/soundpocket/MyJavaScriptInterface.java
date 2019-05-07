@@ -49,7 +49,6 @@ public class MyJavaScriptInterface {
     }
 
 
-
     @JavascriptInterface
     public void alert(String message) {
         new AlertDialog.Builder(context)
@@ -76,11 +75,6 @@ public class MyJavaScriptInterface {
         runJavaScript("callbackTimeFromAndroid(\"" + strDate + "\")");
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
-
-
-
-
-
 
     private void runJavaScript(String jsFunction) {
         final String fJSFunction = jsFunction;
