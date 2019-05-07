@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
         accelerometerManager = new AccelerometerManager();
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
-        packages.put("Mario", new Warcraft3());
+        packages.put("Mario", new Mario());
 
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);

@@ -3,6 +3,8 @@ package com.dynamicdusk.soundpocket;
 import android.content.Context;
 import android.media.MediaPlayer;
 
+import java.nio.channels.Pipe;
+
 /**
  * Created by fredricbillow on 2019-04-08.
  */
@@ -18,6 +20,9 @@ public class SoundPlayer {
     public static final int SOUND_RIGHT_O = R.raw.righto;
     public static final int SOUND_WORK_WORK = R.raw.workwork;
     public static final int SOUND_YES_MI_LORD = R.raw.yesmilord;
+    public static final int FIREBALL = R.raw.fireball;
+    public static final int COIN = R.raw.coin;
+    public static final int PIPE = R.raw.pipe;
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
@@ -87,6 +92,16 @@ public class SoundPlayer {
                     initPlayer(SOUND_WORK_WORK);
                     mPlayer.start();
                     break;
+                case PIPE:
+                    initPlayer(PIPE);
+                    break;
+                case FIREBALL:
+                    initPlayer(FIREBALL);
+                    break;
+                       case COIN:
+                    initPlayer(COIN);
+                    break;
+
                 case -1:
             }
         }
