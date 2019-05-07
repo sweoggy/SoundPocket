@@ -42,7 +42,7 @@ public class Shotgun implements AccelerometerListener {
                 timeStamp = Calendar.getInstance().getTimeInMillis();
                 magazineCocked = false;
                 shots--;
-            } else{
+            } else if ((Calendar.getInstance().getTimeInMillis() - timeStamp) > 500){
                     soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
                     timeStamp = Calendar.getInstance().getTimeInMillis();
                 }
@@ -56,8 +56,9 @@ public class Shotgun implements AccelerometerListener {
                 soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
                 magazineCocked = true;
-            } else{
+            } else if ((Calendar.getInstance().getTimeInMillis() - timeStamp) > 500){
                 soundPlayer.playSound(SoundPlayer.SOUND_EMPTY_PUMP);
+                timeStamp = Calendar.getInstance().getTimeInMillis();
             }
             //jsHandler.alert("Force: " + force);
         }
