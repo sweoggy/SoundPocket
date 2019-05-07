@@ -8,19 +8,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class MainActivity extends AppCompatActivity implements AccelerometerListener {
+public class MainActivity extends AppCompatActivity{
 
     SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
-    public static final int SOUND_PEW_PEW = R.raw.pewpew;
-    public static final int SOUND_PUNCH = R.raw.punch;
-    public static final int SOUND_GUN_SHOT = R.raw.gunshot;
+    Shotgun shotgun;
 
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (AccelerometerManager.isSupported(this)) {
-            AccelerometerManager.startListening(this);
-        }
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);
         setContentView(webView);
@@ -48,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
         webView.addJavascriptInterface(jsHandler, "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
         final WebView webViewCallbackAccess = webView;
+        shotgun = new Shotgun();
+        shotgun.setSoundPlayer(soundPlayer);
+        if (AccelerometerManager.isSupported(this)) {
+            AccelerometerManager.startListening(shotgun);
+        }
+       shotgun.setSoundPlayer(soundPlayer);
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -60,40 +61,6 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
             }
         }, 3000);
 
-    }
-
-    @Override
-    public void onAccelerationChanged(float x, float y, float z) {
-
-    }
-
-    @Override
-    public void onShake(float force) {
-        if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(-1);
-        }
-        //jsHandler.alert("Force: " + force);
-    }
-
-    public void onShakeX(float force) {
-        if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SOUND_PEW_PEW);
-        }
-        //jsHandler.alert("Force: " + force);
-    }
-
-    public void onShakeY(float force) {
-        if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SOUND_GUN_SHOT);
-        }
-        //jsHandler.alert("Force: " + force);
-    }
-
-    public void onShakeZ(float force) {
-        if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SOUND_PUNCH);
-        }
-        //jsHandler.alert("Force: " + force);
     }
 }
 

@@ -1,6 +1,9 @@
 package com.dynamicdusk.soundpocket;
 
+
 public interface AccelerometerListener {
+
+    public void setSoundPlayer(SoundPlayer soundPlayer);
 
     public void onAccelerationChanged(float x, float y, float z);
 
