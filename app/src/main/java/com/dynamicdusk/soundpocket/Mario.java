@@ -1,13 +1,9 @@
 package com.dynamicdusk.soundpocket;
 
-public class Shotgun implements AccelerometerListener {
+public class Mario implements AccelerometerListener {
 
-    private int shots;
-    private boolean loaded;
-    private boolean magazineCocked = false;
-    private boolean magazinePulledForward;
+
     private SoundPlayer soundPlayer;
-    private int intervall;
     public void setSoundPlayer(SoundPlayer soundPlayer){
         this.soundPlayer = soundPlayer;
     }
@@ -26,29 +22,22 @@ public class Shotgun implements AccelerometerListener {
     }
 
     public void onShakeX(float force) {
-
-            if (soundPlayer.isSoundOn()) {
-                if(magazineCocked) {
-                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
-                magazineCocked = false;
-            } else{
-                    soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
-                }
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeY(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
-            magazineCocked = true;
+            soundPlayer.playSound(SoundPlayer.SOUND_COIN);
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeZ(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.SOUND_PUNCH);
+            soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
         }
         //jsHandler.alert("Force: " + force);
     }

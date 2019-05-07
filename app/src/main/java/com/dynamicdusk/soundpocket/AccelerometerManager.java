@@ -11,7 +11,9 @@ public class AccelerometerManager {
 
     private static Context context = null;
 
-    private static float threshold = 12.0f;
+    private static float xThreshold = 12.0f;
+    private static float yThreshold = 8;
+    private static float zThreshold = 12.0f;
     private static int interval = 200;
 
     private static AccelerometerListener listener;
@@ -55,7 +57,7 @@ public class AccelerometerManager {
     }
 
     public static void configure(int threshold, int interval) {
-        AccelerometerManager.threshold = threshold;
+        AccelerometerManager.xThreshold = threshold;
         AccelerometerManager.interval = interval;
     }
 
@@ -152,14 +154,14 @@ public class AccelerometerManager {
                     forceY = Math.abs(y - lastY );
                     forceZ = Math.abs(z - lastZ );
 
-                    if (Float.compare(forceX, threshold) > 0) {
+                    if (Float.compare(forceX, xThreshold) > 0) {
 
                         if (now - lastShake >= interval) {
                             listener.onShakeX(force);
                         }
                         lastShake = now;
                     }
-                    if (Float.compare(forceY, threshold) > 0) {
+                    if (Float.compare(forceY, yThreshold) > 0) {
 
                         if (now - lastShake >= interval) {
                             listener.onShakeY(force);
@@ -167,7 +169,7 @@ public class AccelerometerManager {
                         lastShake = now;
                     }
 
-                    if (Float.compare(forceZ, threshold) > 0) {
+                    if (Float.compare(forceZ, zThreshold) > 0) {
 
                         if (now - lastShake >= interval) {
                             listener.onShakeZ(force);
