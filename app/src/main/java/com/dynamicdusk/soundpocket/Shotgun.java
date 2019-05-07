@@ -2,7 +2,7 @@ package com.dynamicdusk.soundpocket;
 
 public class Shotgun implements AccelerometerListener {
 
-    private int shots;
+    private int shots = 0;
     private boolean loaded;
     private boolean magazineCocked = false;
     private boolean magazinePulledForward;
@@ -28,9 +28,10 @@ public class Shotgun implements AccelerometerListener {
     public void onShakeX(float force) {
 
             if (soundPlayer.isSoundOn()) {
-                if(magazineCocked) {
+                if(magazineCocked &&shots>0) {
                 soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
                 magazineCocked = false;
+                shots--;
             } else{
                     soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
                 }
@@ -40,6 +41,7 @@ public class Shotgun implements AccelerometerListener {
 
     public void onShakeY(float force) {
         if(soundPlayer.isSoundOn()) {
+            if(shots>0) {
             soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
             magazineCocked = true;
         }
@@ -48,7 +50,10 @@ public class Shotgun implements AccelerometerListener {
 
     public void onShakeZ(float force) {
         if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(SoundPlayer.SOUND_PUNCH);
+            soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
+            if(shots<8) {
+                shots++;
+            }
         }
         //jsHandler.alert("Force: " + force);
     }
