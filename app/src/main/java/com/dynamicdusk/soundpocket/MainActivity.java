@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity{
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
+        packages.put("MLG", new MLG());
 
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);

@@ -56,6 +56,8 @@ public class Shotgun implements AccelerometerListener {
                 soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
                 magazineCocked = true;
+            } else{
+                soundPlayer.playSound(SoundPlayer.SOUND_EMPTY_PUMP);
             }
             //jsHandler.alert("Force: " + force);
         }

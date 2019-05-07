@@ -49,8 +49,10 @@
 </div>
 
 <div class="wrapCenter">
-    <h1>Active pack text</h1>
-    <button class="packBtn" onclick="browse()">Active pack svg</button>
+    <h1>Shotgun pack</h1>
+    <button class="packBtn" onclick="browse()">
+        <img src="shotgun.svg" width="150px" height="150px"/>
+    </button>
     <button class="bigStdBtn" onclick="">Choose pack</button>
 </div>
 <div class="emptySpace">
@@ -72,9 +74,10 @@
 
 <h2>Choose your sound</h2>
 
-<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3)">Shotgun</button>
-<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun)">Mario</button>
-<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario)">Warcraft 3</button>
+<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3, buttonMLG)">Shotgun</button>
+<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun, buttonMLG)">Mario</button>
+<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario, buttonMLG)">Warcraft 3</button>
+<button id="buttonMLG" class="button button5" onclick="chooseSound(buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">MLG</button>
 
 <hr>
 <h2>Test Android callback by getting time</h2>
@@ -103,6 +106,8 @@
             Android.setSound("Mario");
         } else if (id.id == 'buttonWarcraft3') {
             Android.setSound("Warcraft3");
+        } else if (id.id == 'buttonMLG') {
+            Android.setSound("MLG");
         }
     }
 
