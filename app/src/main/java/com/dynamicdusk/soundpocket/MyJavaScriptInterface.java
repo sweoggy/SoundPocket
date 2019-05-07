@@ -43,19 +43,6 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setSound(int id) {
-        System.out.println("---------------------------------setSoundOn");
-        if(id == 1) {
-            soundPlayer.setSound(SoundPlayer.SOUND_PEW_PEW);
-            System.out.println("---------------------------------setSoundOn 1");
-        } else if(id == 2) {
-            soundPlayer.setSound(SoundPlayer.SOUND_PUNCH);
-            System.out.println("---------------------------------setSoundOn 2");
-        } else if (id == 3) {
-            soundPlayer.setSound(SoundPlayer.SOUND_GUN_SHOT);
-            System.out.println("---------------------------------setSoundOn 3");
-        }
-        //alert("not working");
-        soundPlayer.playSound(-1);
     }
 
 

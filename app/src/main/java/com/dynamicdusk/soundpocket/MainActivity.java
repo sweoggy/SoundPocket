@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity{
     SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
     Shotgun shotgun;
+    public static final int SOUND_PEW_PEW = R.raw.pewpew;
+    public static final int SOUND_PUNCH = R.raw.punch;
+    public static final int SOUND_GUN_SHOT = R.raw.gunshot;
 
     protected void onCreate(Bundle savedInstanceState) {
 

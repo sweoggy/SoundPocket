@@ -2,32 +2,50 @@ package com.dynamicdusk.soundpocket;
 
 import android.content.Context;
 
-public class Warcraft3 extends SoundPlayer {
-    public static final int SOUND_OFF_I_GO_THEN = R.raw.offIgothen;
-    public static final int SOUND_RIGHT_O = R.raw.righto;
-    public static final int SOUND_YES_MILORD = R.raw.yesmilord;
-    public Warcraft3 (Context context){
-        super(context);
+public class Warcraft3 implements AccelerometerListener {
+
+    SoundPlayer soundPlayer;
+
+
+    public void set(SoundPlayer soundPlayer) {
+        this.soundPlayer = soundPlayer;
     }
 
-    protected void playSpecificSound (int sound){
-        if (soundOn){
-            switch (sound) {
-                case SOUND_YES_MILORD:
-                    initPlayer(SOUND_YES_MILORD);
-                    mPlayer.start();
-                    break;
-                case SOUND_RIGHT_O:
-                    initPlayer(SOUND_RIGHT_O);
-                    mPlayer.start();
-                    break;
-                case SOUND_OFF_I_GO_THEN:
-                    initPlayer(SOUND_OFF_I_GO_THEN);
-                    mPlayer.start();
-                    break;
-                case -1:
-            }
+    public void setSoundPlayer(SoundPlayer soundPlayer){
+        this.soundPlayer = soundPlayer;
+    }
 
+    @Override
+    public void onAccelerationChanged(float x, float y, float z) {
+
+    }
+
+    @Override
+    public void onShake(float force) {
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(-1);
         }
+        //jsHandler.alert("Force: " + force);
+    }
+
+    public void onShakeX(float force) {
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
+        }
+        //jsHandler.alert("Force: " + force);
+    }
+
+    public void onShakeY(float force) {
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
+        }
+        //jsHandler.alert("Force: " + force);
+    }
+
+    public void onShakeZ(float force) {
+        if(soundPlayer.isSoundOn()) {
+            soundPlayer.playSound(SoundPlayer.SOUND_PUNCH);
+        }
+        //jsHandler.alert("Force: " + force);
     }
 }
