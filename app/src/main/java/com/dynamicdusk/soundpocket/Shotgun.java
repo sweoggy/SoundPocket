@@ -40,12 +40,13 @@ public class Shotgun implements AccelerometerListener {
     }
 
     public void onShakeY(float force) {
-        if(soundPlayer.isSoundOn()) {
-            if(shots>0) {
-            soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
-            magazineCocked = true;
+        if (soundPlayer.isSoundOn()) {
+            if (shots > 0) {
+                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
+                magazineCocked = true;
+            }
+            //jsHandler.alert("Force: " + force);
         }
-        //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeZ(float force) {
