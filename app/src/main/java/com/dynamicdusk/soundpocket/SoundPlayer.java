@@ -14,6 +14,10 @@ public class SoundPlayer {
     public static final int SOUND_GUN_SHOT = R.raw.gunshot;
     public static final int SOUND_SHOTGUN_SHOT = R.raw.shotgunshot;
     public static final int SOUND_SHOTGUN_RELOAD = R.raw.shotgunreload;
+    public static final int SOUND_OFF_I_GO_THEN = R.raw.offigothen;
+    public static final int SOUND_RIGHT_O = R.raw.righto;
+    public static final int SOUND_WORK_WORK = R.raw.workwork;
+    public static final int SOUND_YES_MILORD = R.raw.yesmilord;
 
 
     protected MediaPlayer mPlayer;
@@ -70,6 +74,18 @@ public class SoundPlayer {
                     break;
                 case SOUND_SHOTGUN_RELOAD:
                     initPlayer(SOUND_SHOTGUN_RELOAD);
+                    mPlayer.start();
+                    break;
+                case SOUND_OFF_I_GO_THEN:
+                    initPlayer(SOUND_OFF_I_GO_THEN);
+                    mPlayer.start();
+                    break;
+                case SOUND_YES_MILORD:
+                    initPlayer(SOUND_YES_MILORD);
+                    mPlayer.start();
+                    break;
+                case SOUND_WORK_WORK:
+                    initPlayer(SOUND_WORK_WORK);
                     mPlayer.start();
                     break;
                 case -1:
