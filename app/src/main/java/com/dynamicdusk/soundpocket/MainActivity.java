@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity{
         packages.put("Mario", new Mario());
         packages.put("MLG", new MLG());
         packages.put("LightSaber", new LightSaber());
+        packages.put("Pistol", new Pistol());
 
         super.onCreate(savedInstanceState);
         WebView webView = new WebView(this);
